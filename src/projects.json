@@ -1,0 +1,182 @@
+[
+  {
+    "id": "proj-1",
+    "title": "Meta Connector Launch",
+    "description": "Meta account ad creation, launch setup, and instant form integration.",
+    "status": "Active",
+    "owners": ["Soham"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Meta", "Ads", "Connectors"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-2",
+    "title": "Zip Connector Testing",
+    "description": "Testing and debugging Meta connector workflow for Zip integration.",
+    "status": "In Progress",
+    "owners": ["Pranav", "Soham"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Zip", "Debugging", "Integration"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-3",
+    "title": "Social Media Channel Expansion",
+    "description": "New social channel creation, meta verification, and supplementary account population.",
+    "status": "Completed",
+    "owners": ["Aakansha"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Social Media", "Meta", "Marketing"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-4",
+    "title": "Instagram CRM Agent",
+    "description": "Developing an Instagram CRM with automation and creative intern hiring.",
+    "status": "Active",
+    "owners": ["Satyam", "Soham"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Instagram", "CRM", "Hiring"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-5",
+    "title": "Community Building Initiative",
+    "description": "Cross-platform community building using Meta and creative collaboration.",
+    "status": "Ongoing",
+    "owners": ["Aakansha"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Community", "Social Growth", "Meta"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-6",
+    "title": "Reddit Authority Program",
+    "description": "New Reddit account creation and authority accumulation through upvotes.",
+    "status": "Planned",
+    "owners": ["Team"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Reddit", "Community", "Authority"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-7",
+    "title": "Digital Ad Boards Initiative",
+    "description": "Research, planning, and cost-benefit analysis for digital ad boards across EU and NAMER.",
+    "status": "Under Review",
+    "owners": ["Soham", "Aakansha"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["AdTech", "Digital Boards", "Marketing"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-8",
+    "title": "Advanced Layering Protocol 5.0",
+    "description": "Developing Matrix 5.0 to capture users from multiple sources and optimize layering.",
+    "status": "In Progress",
+    "owners": ["Gungun", "Soham"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["AI", "Protocol", "Matrix"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-9",
+    "title": "Media Plan RFP",
+    "description": "Defining software dependencies and creating supply-to-social media plan workflows.",
+    "status": "Ongoing",
+    "owners": ["Pranav"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["RFP", "Media Plan", "Dependencies"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-10",
+    "title": "Re-engagement LLM Integration",
+    "description": "Integrate AI-based re-engagement across LinkedIn, WhatsApp, and Instagram channels.",
+    "status": "Testing",
+    "owners": ["Pranav", "Raj", "Soham"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["LLM", "Re-engagement", "Automation"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-11",
+    "title": "myPOS CBA Research",
+    "description": "Evaluating myPOS payment platform and conducting CBA on new channel strategies.",
+    "status": "Planned",
+    "owners": ["Raj"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["Finance", "CBA", "Payments"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  },
+  {
+    "id": "proj-12",
+    "title": "Miscellaneous Initiatives",
+    "description": "SEO improvements, healthcare campaign audits, and global client research for optimization.",
+    "status": "Active",
+    "owners": ["Soham", "Satyam"],
+    "lastUpdated": "2025-11-12",
+    "tags": ["SEO", "Healthcare", "Campaigns"],
+    "links": [
+      {
+        "label": "Team Project Sheet (Google Drive)",
+        "url": "https://docs.google.com/spreadsheets/d/1V8Or_KekMrwLP9uyUtE-y4SAWC0iFSWp8rw8402QhaE/edit?usp=sharing"
+      }
+    ]
+  }
+]
