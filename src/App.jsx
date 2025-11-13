@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import Header from './components/Header';
-import SearchFilterBar from './components/SearchFilterBar';
 import ProjectCard from './components/ProjectCard';
 import ProjectModal from './components/ProjectModal';
 import projectsData from './projects.json';
@@ -8,70 +8,87 @@ import './index.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Filter projects based on search and status
+  // Filter projects based on search
   const filteredProjects = useMemo(() => {
-    return projectsData.filter(project => {
-      // Status filter
-      const matchesStatus = statusFilter === 'All' || project.status === statusFilter;
-      
-      // Search filter (title or tags)
-      const matchesSearch = searchQuery === '' || 
-        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-      
-      return matchesStatus && matchesSearch;
-    });
-  }, [searchQuery, statusFilter]);
+    if (!searchQuery) return projectsData;
+    
+    const query = searchQuery.toLowerCase();
+    return projectsData.filter(project => 
+      project.title.toLowerCase().includes(query) ||
+      project.description.toLowerCase().includes(query) ||
+      project.tags.some(tag => tag.toLowerCase().includes(query)) ||
+      project.owners.some(owner => owner.toLowerCase().includes(query))
+    );
+  }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-joveo-bg">
-      <Header />
+    <div className="min-h-screen bg-dark-bg bg-noise">
+      {/* Header/Hero Section */}
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Search and Filter */}
-        <SearchFilterBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          statusFilter={statusFilter}
-          setStatusFilter={setStatusFilter}
-        />
+      {/* Projects Section */}
+      <main className="relative">
+        {/* Section Header */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-4xl font-bold text-white mb-2">Active Initiatives</h2>
+                <p className="text-white/60">
+                  {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'} 
+                  {searchQuery && ' matching your search'}
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Results Count */}
-        <div className="mb-4">
-          <p className="text-sm text-gray-600">
-            Showing <span className="font-semibold text-joveo-blue">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
-          </p>
+          {/* Project Cards - Full Width Layout */}
+          {filteredProjects.length > 0 ? (
+            <div className="space-y-6">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <ProjectCard
+                    project={project}
+                    onClick={() => setSelectedProject(project)}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-24 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl"
+            >
+              <div className="text-8xl mb-6">🔍</div>
+              <h3 className="text-3xl font-bold text-white mb-3">No projects found</h3>
+              <p className="text-white/60 text-lg">Try adjusting your search criteria</p>
+            </motion.div>
+          )}
         </div>
-
-        {/* Project Cards Grid */}
-        {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {filteredProjects.map(project => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 bg-white rounded-2xl shadow-sm">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">No projects found</h3>
-            <p className="text-gray-500">Try adjusting your search or filter criteria</p>
-          </div>
-        )}
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="text-center text-sm text-gray-500">
-            <p>© 2025 Joveo — Global Supply & Partnerships | New Initiatives Team</p>
-            <p className="mt-1">Built with React, Tailwind CSS, and Framer Motion</p>
+      <footer className="relative border-t border-white/10 mt-32">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+          <div className="text-center">
+            <p className="text-white/40 text-sm mb-2">
+              © 2025 Joveo — Global Supply & Partnerships | New Initiatives Team
+            </p>
+            <p className="text-white/30 text-xs">
+              Built with React, Tailwind CSS, and Framer Motion
+            </p>
           </div>
         </div>
       </footer>

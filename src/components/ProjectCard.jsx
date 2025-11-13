@@ -1,111 +1,108 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, User, Eye } from 'lucide-react';
+import { ExternalLink, Info, Calendar, User } from 'lucide-react';
 
 const ProjectCard = ({ project, onClick }) => {
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Active':
-        return 'bg-green-100 text-green-700 border-green-200';
-      case 'Paused':
-        return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-      case 'Completed':
-        return 'bg-blue-100 text-blue-700 border-blue-200';
-      case 'Upcoming':
-        return 'bg-purple-100 text-purple-700 border-purple-200';
-      default:
-        return 'bg-gray-100 text-gray-700 border-gray-200';
-    }
-  };
-
+  // Get initials from owner names
   const getInitials = (name) => {
-    return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
-      .toUpperCase();
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
   };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+      whileHover={{ scale: 1.01, y: -2 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-2xl shadow-md p-6 flex flex-col h-full border border-gray-100"
+      className="group relative"
     >
-      {/* Header with Status */}
-      <div className="flex items-start justify-between mb-4">
-        <h3 className="text-xl font-bold text-joveo-text font-poppins flex-1 leading-tight">
-          {project.title}
-        </h3>
-        <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(project.status)} ml-2 whitespace-nowrap`}>
-          {project.status}
-        </span>
-      </div>
+      {/* Accent stripe */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-accent to-secondary-accent rounded-l-2xl"></div>
 
-      {/* Description */}
-      <p className="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
-        {project.description}
-      </p>
+      {/* Glow effect on hover */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-accent/0 via-primary-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
 
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="px-2 py-1 bg-joveo-blue/10 text-joveo-blue rounded-md text-xs font-medium"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Owners */}
-      <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
-        <User className="h-4 w-4 text-gray-400" />
-        <div className="flex -space-x-2">
-          {project.owners.map((owner, index) => (
-            <div
-              key={index}
-              className="h-8 w-8 rounded-full bg-joveo-orange text-white flex items-center justify-center text-xs font-semibold border-2 border-white"
-              title={owner}
-            >
-              {getInitials(owner)}
+      {/* Main card */}
+      <div className="relative bg-white/5 backdrop-blur-md border border-glass-border hover:border-primary-accent/30 rounded-2xl p-8 transition-all duration-300">
+        <div className="flex items-start justify-between gap-8">
+          {/* Left: Content */}
+          <div className="flex-1 space-y-6">
+            {/* Title & Description */}
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary-accent transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-white/60 text-lg leading-relaxed">
+                {project.description}
+              </p>
             </div>
-          ))}
-        </div>
-        <span className="text-sm text-gray-600 ml-2">
-          {project.owners.join(', ')}
-        </span>
-      </div>
 
-      {/* Footer with Date and Actions */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 text-xs text-gray-500">
-          <Calendar className="h-3 w-3" />
-          <span>Updated: {new Date(project.lastUpdated).toLocaleDateString()}</span>
-        </div>
-        
-        <div className="flex gap-2">
-          <button
-            onClick={onClick}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-joveo-blue hover:bg-joveo-blue hover:text-white rounded-lg transition-colors border border-joveo-blue"
-          >
-            <Eye className="h-3.5 w-3.5" />
-            Details
-          </button>
-          {project.links && project.links.length > 0 && (
-            <a
-              href={project.links[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-joveo-blue text-white hover:bg-joveo-blue/90 rounded-lg transition-colors"
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-              Docs
-            </a>
-          )}
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-4 py-1.5 bg-primary-accent/10 text-primary-accent border border-primary-accent/20 rounded-full text-sm font-medium"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Meta info */}
+            <div className="flex items-center gap-6 text-sm text-white/50">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>Updated {new Date(project.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>{project.owners.length} {project.owners.length === 1 ? 'Owner' : 'Owners'}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Owners & Actions */}
+          <div className="flex flex-col items-end gap-6">
+            {/* Owner avatars */}
+            <div className="flex items-center -space-x-3">
+              {project.owners.map((owner, index) => (
+                <div
+                  key={owner}
+                  title={owner}
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-accent to-secondary-accent flex items-center justify-center text-white font-bold text-sm border-4 border-dark-bg shadow-lg hover:scale-110 hover:z-10 transition-transform cursor-pointer"
+                  style={{ zIndex: project.owners.length - index }}
+                >
+                  {getInitials(owner)}
+                </div>
+              ))}
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex flex-col gap-3 w-48">
+              {/* Open Sheet button */}
+              {project.sheetUrl && (
+                <a
+                  href={project.sheetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-accent to-secondary-accent hover:from-primary-accent/90 hover:to-secondary-accent/90 text-white font-semibold rounded-xl transition-all shadow-lg shadow-primary-accent/20 hover:shadow-primary-accent/40 hover:scale-105"
+                >
+                  <span>Open Sheet</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              )}
+
+              {/* Details button */}
+              <button
+                onClick={onClick}
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary-accent/50 text-white/90 font-semibold rounded-xl transition-all"
+              >
+                <span>Details</span>
+                <Info className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
